@@ -51,10 +51,10 @@
                 </div>
               </li> -->
               <li class="nav-item" style=" margin-left: 5px;">
-                <a class="nav-link" href="news.html">News</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/news/news.jsp">News</a>
               </li>
               <li class="nav-item" style=" margin-left: 5px; ">
-                <a class="nav-link" href="news.html">Schedule</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/schedule/schedule.jsp">Schedule</a>
               </li>
               <li class="nav-item" style=" margin-left: 5px;">
                 <a class="nav-link" href="news.html">Product</a>
@@ -63,13 +63,13 @@
                 <a class="nav-link" href="news.html">Notification</a>
               </li>
               <li class="nav-item" style=" margin-left: 5px;">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/contact/contact.jsp">Contact</a>
               </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
               <li class="nav-item cta-btn">
-                <a class="nav-link" href="member.html">Become a member</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/login/css_Login/sign_Up.jsp">Become a member</a>
               </li>
              <li class="nav-item cta-btn">
                 <a  style="background:#29aaaa" class="nav-link" href="<%=request.getContextPath()%>/login/login.jsp">Login</a>
@@ -78,22 +78,13 @@
             </ul>
             
           </div>
+      
+       
         </div>
+         
       </nav>
- 
+  
     </header>
-    
-    
-    <script src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/popper.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/jquery.waypoints.min.js"></script>
 
-    <script src="<%=request.getContextPath()%>/js/jquery.magnific-popup.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/magnific-popup-options.js"></script>
-    
-
-    <script src="<%=request.getContextPath()%>/js/main.js"></script>
 </body>
 </html>

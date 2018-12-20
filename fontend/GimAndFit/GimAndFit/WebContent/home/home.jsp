@@ -75,31 +75,31 @@
       <div class="owl-carousel centernonloop">
         <a href="#" class="item-class">
           <div class="text">
-            <p class="class-price">$30.99</p>
+            <p class="class-price">450.000VND</p>
             <h2 class="class-heading">Fitness Class Name Here</h2>
           </div>
-          <img src="<%=request.getContextPath()%>/img/img_1_square.jpg" alt="" class="img-fluid">
+          <img src="<%=request.getContextPath()%>/img/gym4.jpg" alt="" class="img-fluid">
         </a>
         <a href="#" class="item-class">
           <div class="text">
             <p class="class-price">500.000VND</p>
             <h2 class="class-heading">Fitness Class Name Here</h2>
           </div>
-          <img src="<%=request.getContextPath()%>/img/img_2_square.jpg" alt="" class="img-fluid">
+          <img src="<%=request.getContextPath()%>/img/gym2.jpg" alt="" class="img-fluid">
         </a>
         <a href="#" class="item-class">
           <div class="text">
             <p class="class-price">500.000VND</p>
             <h2 class="class-heading">Fitness Class Name Here</h2>
           </div>
-          <img src="<%=request.getContextPath()%>/img/img_3_square.jpg" alt="" class="img-fluid">
+          <img src="<%=request.getContextPath()%>/img/gym3.jpg" alt="" class="img-fluid">
         </a>
         <a href="#" class="item-class">
           <div class="text">
-            <p class="class-price">$30.99</p>
+            <p class="class-price">300.000VND</p>
             <h2 class="class-heading">Fitness Class Name Here</h2>
           </div>
-          <img src="<%=request.getContextPath()%>/img/img_4_square.jpg" alt="" class="img-fluid">
+          <img src="<%=request.getContextPath()%>/img/gym5.jpg" alt="" class="img-fluid">
         </a>
       </div>
     </section> <!-- .section -->
@@ -122,7 +122,7 @@
         <div class="row no-gutters">
           <div class="col-md-6">
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image order-2" style="background-image: url('<%=request.getContextPath()%>/img/img_1_square.jpg');"></div>
+              <div class="bg-image order-2" style="background-image: url('<%=request.getContextPath()%>/img/gym4.jpg');"></div>
               <div class="text order-1">
                 <h3>Fitness Class Name Here</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
@@ -130,14 +130,14 @@
                   <span><span class="fa fa-clock-o"></span> 5:30 PM</span> <br>
                   <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
                 </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Join from $15</a></p>
+                <p><a href="#" class="btn btn-primary btn-sm">Join from 150.000vnd</a></p>
                 
               </div>
               
             </div>
 
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/img_2_square.jpg');"></div>
+              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/gym2.jpg');"></div>
               <div class="text">
                 <h3>Fitness Class Name Here</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
@@ -145,7 +145,7 @@
                   <span><span class="fa fa-clock-o"></span> 5:30 PM</span> <br>
                   <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
                 </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Join from $15</a></p>
+                <p><a href="#" class="btn btn-primary btn-sm">Join from 150.000vnd</a></p>
                 
               </div>
               
@@ -155,7 +155,7 @@
 
           <div class="col-md-6">
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image order-2" style="background-image: url('<%=request.getContextPath()%>/img/img_4_square.jpg');"></div>
+              <div class="bg-image order-2" style="background-image: url('<%=request.getContextPath()%>/img/gym3.jpg');"></div>
               <div class="text order-1">
                 <h3>Fitness Class Name Here</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
@@ -163,14 +163,14 @@
                   <span><span class="fa fa-clock-o"></span> 5:30 PM</span> <br>
                   <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
                 </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Join from $15</a></p>
+                <p><a href="#" class="btn btn-primary btn-sm">Join from 150.000vnd</a></p>
                 
               </div>
               
             </div>
 
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/img_3_square.jpg');"></div>
+              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/gym5.jpg');"></div>
               <div class="text">
                 <h3>Fitness Class Name Here</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
@@ -178,7 +178,7 @@
                   <span><span class="fa fa-clock-o"></span> 5:30 PM</span> <br>
                   <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
                 </p>
-                <p><a href="#" class="btn btn-primary btn-sm">Join from $15</a></p>
+                <p><a href="#" class="btn btn-primary btn-sm">Join from 150.000vnd</a></p>
                 
               </div>
               
@@ -208,27 +208,27 @@
             <div class="major-caousel js-carousel-1 owl-carousel">
               <div>
                 <div class="media d-block media-custom text-center">
-                  <a href="#"><img src="<%=request.getContextPath()%>/img/person_1.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                  <a href=""><img src="<%=request.getContextPath()%>/img/lsi1.jpg" alt="Image Placeholder" class="img-fluid"></a>
                   <div class="media-body">
-                    <h3 class="mt-0 text-black">Mellisa Howard</h3>
+                    <h3 class="mt-0 text-black">Phạm Văn Mách</h3>
+                    <p class="lead">Gym Trainer</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+              <div class="media d-block media-custom text-center">
+                  <a href="#"><img src="<%=request.getContextPath()%>/img/lsi2.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                  <div class="media-body">
+                    <h3 class="mt-0 text-black">Nguyễn Thị Mỹ Linh</h3>
                     <p class="lead">Gym Trainer</p>
                   </div>
                 </div>
               </div>
               <div>
                 <div class="media d-block media-custom text-center">
-                  <a href="#"><img src="<%=request.getContextPath()%>/img/person_2.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                  <a href="#"><img src="<%=request.getContextPath()%>/img/lsi3.jpg" alt="Image Placeholder" class="img-fluid"></a>
                   <div class="media-body">
-                    <h3 class="mt-0 text-black">Mike Richardson</h3>
-                    <p class="lead">Gym Trainer</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="media d-block media-custom text-center">
-                  <a href="#"><img src="<%=request.getContextPath()%>/img/person_3.jpg" alt="Image Placeholder" class="img-fluid"></a>
-                  <div class="media-body">
-                    <h3 class="mt-0 text-black">Charles White</h3>
+                    <h3 class="mt-0 text-black">Lý Đức</h3>
                     <p class="lead">Gym Trainer</p>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
 
                <div>
               <div class="media d-block media-custom text-center">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/person_1.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                <a href="#"><img src="<%=request.getContextPath()%>/img/gym6.jpg" alt="Image Placeholder" class="img-fluid"></a>
                 <div class="media-body">
                   <h3 class="mt-0 text-black">Mellisa Howard</h3>
                   <p class="lead">Gym Trainer</p>
@@ -244,20 +244,20 @@
               </div>
             </div>
             <div>
-              <div class="media d-block media-custom text-center">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/person_2.jpg" alt="Image Placeholder" class="img-fluid"></a>
-                <div class="media-body">
-                  <h3 class="mt-0 text-black">Mike Richardson</h3>
-                  <p class="lead">Gym Trainer</p>
+             <div class="media d-block media-custom text-center">
+                  <a href="adoption-single.html"><img src="<%=request.getContextPath()%>/img/lsi3.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                  <div class="media-body">
+                    <h3 class="mt-0 text-black">Lý Đức</h3>
+                      <p class="lead">Gym Trainer</p>
                 </div>
               </div>
             </div>
             <div>
-              <div class="media d-block media-custom text-center">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/person_3.jpg" alt="Image Placeholder" class="img-fluid"></a>
+             <div class="media d-block media-custom text-center">
+                <a href="adoption-single.html"><img src="<%=request.getContextPath()%>/img/lsi1.jpg" alt="Image Placeholder" class="img-fluid"></a>
                 <div class="media-body">
-                  <h3 class="mt-0 text-black">Charles White</h3>
-                  <p class="lead">Gym Trainer</p>
+                  <h3 class="mt-0 text-black">Phạm Văn Mách</h3>
+                   <p class="lead">Gym Trainer</p>
                 </div>
               </div>
             </div>
@@ -289,10 +289,10 @@
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
               <div class="d-flex author">
-                <img src="<%=request.getContextPath()%>/img/person_1.jpg" alt="" class="mr-4">
+                <img src="<%=request.getContextPath()%>/img/lsi2.jpg" alt="" class="mr-4">
                 <div class="author-info">
-                  <h4>Mellisa Howard</h4>
-                  <p>CEO, XYZ Company</p>
+                  <h4>Nguyễn Thị Mỹ Linh</h4>
+                  <p>CEO, VimGroup Company</p>
                 </div>
               </div>  
             </blockquote>
@@ -301,10 +301,10 @@
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
               <div class="d-flex author">
-                <img src="<%=request.getContextPath()%>/img/person_2.jpg" alt="" class="mr-4">
+                <img src="<%=request.getContextPath()%>/img/lsi3.jpg" alt="" class="mr-4">
                 <div class="author-info">
-                  <h4>Mike Richardson</h4>
-                  <p>CEO, XYZ Company</p>
+                  <h4>Lý Đức</h4>
+                  <p>CEO, Gym Company</p>
                 </div>
               </div>  
             </blockquote>
@@ -313,9 +313,9 @@
             <blockquote class="testimonial">
               <p>&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, obcaecati? Quis eum minus, sequi atque quisquam ducimus aliquam veritatis nobis cum iusto neque enim explicabo maxime natus doloribus, fuga sunt. &rdquo;</p>
               <div class="d-flex author">
-                <img src="<%=request.getContextPath()%>/img/person_3.jpg" alt="" class="mr-4">
+                <img src="<%=request.getContextPath()%>/img/lsi1.jpg" alt="" class="mr-4">
                 <div class="author-info">
-                  <h4>Charles White</h4>
+                  <h4>Phạm Văn Mách</h4>
                   <p>CEO, XYZ Company</p>
                 </div>
               </div>  
@@ -341,7 +341,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="blog d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/img_2_square.jpg');"></div>
+              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/gym3.jpg');"></div>
               <div class="text">
                 <h3>Fitness Class Name Here</h3>
                 <p class="sched-time">
@@ -357,7 +357,7 @@
           </div>
           <div class="col-md-6">
             <div class="blog d-block d-lg-flex">
-              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/img_2_square.jpg');"></div>
+              <div class="bg-image" style="background-image: url('<%=request.getContextPath()%>/img/gym5.jpg');"></div>
               <div class="text">
                 <h3>Fitness Class Name Here</h3>
                 <p class="sched-time">

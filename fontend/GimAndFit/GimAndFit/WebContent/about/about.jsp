@@ -110,16 +110,16 @@
                   <a href=""><img src="<%=request.getContextPath()%>/img/lsi1.jpg" alt="Image Placeholder" class="img-fluid"></a>
                   <div class="media-body">
                     <h3 class="mt-0 text-black">Phạm Văn Mách</h3>
-                    <p class="lead">CEO, Co-Founder</p>
+                    <p class="lead">Gym, Co-Founder</p>
                   </div>
                 </div>
               </div>
               <div>
                 <div class="media d-block media-custom text-center">
-                  <a href="adoption-single.html"><img src="<%=request.getContextPath()%>/img/lsi2.jpg" alt="Image Placeholder" class="img-fluid"></a>
+                  <a href="#"><img src="<%=request.getContextPath()%>/img/lsi2.jpg" alt="Image Placeholder" class="img-fluid"></a>
                   <div class="media-body">
                     <h3 class="mt-0 text-black">Nguyễn Thị Mỹ Linh</h3>
-                    <p class="lead">CEO, Co-Founder</p>
+                    <p class="lead">Gym, Co-Founder</p>
                   </div>
                 </div>
               </div>
@@ -128,7 +128,7 @@
                   <a href="adoption-single.html"><img src="<%=request.getContextPath()%>/img/lsi3.jpg" alt="Image Placeholder" class="img-fluid"></a>
                   <div class="media-body">
                     <h3 class="mt-0 text-black">Lý Đức</h3>
-                    <p class="lead">CEO, Co-Founder</p>
+                    <p class="lead">Gym Trainer</p>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@
                 <a href="adoption-single.html"><img src="<%=request.getContextPath()%>/img/lsi1.jpg" alt="Image Placeholder" class="img-fluid"></a>
                 <div class="media-body">
                   <h3 class="mt-0 text-black">Phạm Văn Mách</h3>
-                  <p class="lead">CEO, Co-Founder</p>
+                  <p class="lead">Gym Trainer</p>
                 </div>
               </div>
             </div>
