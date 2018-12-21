@@ -9,9 +9,9 @@ public class ConnectDB {
 	public static Connection getConnection() {
 		Connection connection =null;
 		String driver =  "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=PTTK-HTTT";
-		String user = "sa";
-		String pass = "thach";
+		String url = "jdbc:sqlserver://gymandfit.database.windows.net:1433;databaseName=gymandfit";
+		String user = "gymandfit";
+		String pass = "Ngothimylinh1998";
 	
 		try {
 			Class.forName(driver);
