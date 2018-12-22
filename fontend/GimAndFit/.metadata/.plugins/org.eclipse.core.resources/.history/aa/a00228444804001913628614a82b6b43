@@ -1,0 +1,10 @@
+package dao;
+
+import java.util.ArrayList;
+
+import model.Product;
+
+public class Product_DAO {
+	
+	ArrayList<Product> list;
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="img-fluid" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="img-fluid"/>
+			<item value="img-fluid "/>
+			<item value=".img-fluid "/>
+			<item value="his"/>
+			<item value="owl-carousel .owl-item img "/>
+			<item value="per"/>
+			<item value="img"/>
+			<item value="login"/>
+			<item value="ISO-8859-1"/>
+			<item value="nav-item"/>
+			<item value="header .navba"/>
+			<item value="http://localhost:8082/GimAndFit/home/home.jsp"/>
+			<item value="header .navbar"/>
+			<item value="img_1"/>
+		</list>
+		<list key="replacehistory">
+			<item value="utf-8"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="284" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="466" key="DIALOG_HEIGHT"/>
+		<item value="967" key="DIALOG_X_ORIGIN"/>
+		<item value="247" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
