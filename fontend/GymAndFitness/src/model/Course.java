@@ -3,21 +3,52 @@ package model;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.StringTokenizer;
+
+import dao.UserDAOImpl;
 
 public class Course {
 	private int courseID;
 	private String courseCode;
 	private String courseName;
 	private String description;
+	private int courseType;
 	private Date startDate;
 	private Date endDate;
+	private int trainerID;
 	private String trainerCode;
 	private String trainerName;
-	private String userCode;
-	private String userName;
+	private long quantity;
+	private String actor;
+	private float fee;
+	private String city;
+	private String town;
+	private String address;
+	
 	private int status;
 	
+	public Course(String courseCode, String courseName, String description, int courseType, Date startDate,
+			Date endDate, int trainerID, String trainerCode, String trainerName, long quantity, String actor, float fee,
+			String city, String town, String address) {
+		super();
+		this.courseCode = courseCode;
+		this.courseName = courseName;
+		this.description = description;
+		this.courseType = courseType;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.trainerID = trainerID;
+		this.trainerCode = trainerCode;
+		this.trainerName = trainerName;
+		this.quantity = quantity;
+		this.actor = actor;
+		this.fee = fee;
+		this.city = city;
+		this.town = town;
+		this.address = address;
+	}
+
 	public Course() {}
 
 	public int getCourseID() {
@@ -75,26 +106,90 @@ public class Course {
 	public void setTrainerName(String trainerName) {
 		this.trainerName = trainerName;
 	}
-	public String getUserCode() {
-		return userCode;
-	}
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+	
+	
 	@Override
 	public String toString() {
 		return "Course [courseID=" + courseID + ", courseCode=" + courseCode + ", courseName=" + courseName
-				+ ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", trainerCode=" + trainerCode + ", trainerName=" + trainerName + ", userCode=" + userCode
-				+ ", userName=" + userName + ", status=" + status + "]";
+				+ ", description=" + description + ", courseType=" + courseType + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", trainerID=" + trainerID + ", trainerCode=" + trainerCode
+				+ ", trainerName=" + trainerName + ", quantity=" + quantity + ", actor=" + actor + ", fee=" + fee
+				+ ", city=" + city + ", town=" + town + ", address=" + address + ", status=" + status + "]";
 	}
-	
+
+	public int getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(int courseType) {
+		this.courseType = courseType;
+	}
+
+	public int getTrainerID() {
+		return trainerID;
+	}
+	public void setTrainerID(int id) {
+		this.trainerID = id;
+	}
+	public void transCodeToId(String trainerCode) {
+		int id=0;
+		List<Users> list = new UserDAOImpl().getAllUser();
+		for(Users u : list) {
+			if(u.getUserCode().equalsIgnoreCase(trainerCode)) {
+				id = u.getUserID(); break;
+			}
+		}
+		this.trainerID = id;
+	}
+
+	public long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(long quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getActor() {
+		return actor;
+	}
+
+	public void setActor(String actor) {
+		this.actor = actor;
+	}
+
+	public float getFee() {
+		return fee;
+	}
+
+	public void setFee(float fee) {
+		this.fee = fee;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getTown() {
+		return town;
+	}
+
+	public void setTown(String town) {
+		this.town = town;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public static void main(String[] args) {
 	}
 }

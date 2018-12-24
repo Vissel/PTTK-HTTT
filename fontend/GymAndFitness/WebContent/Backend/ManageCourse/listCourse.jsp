@@ -25,16 +25,10 @@
 String message = (String) request.getParameter("message");
 	if(message != null){
  	switch(message){
- 	case "cancel":
- 	%>
- 	<script type="text/javascript" >
-			alert('Hủy chức năng thành công');
-			</script>
- 	<%break;
  	case "add":
- 	 	%>
+ 	%>
  	 	<script type="text/javascript" >
- 				alert('Thêm user thành công');
+ 				alert('Thêm khóa học thành công');
  				</script>
  	 	<%break;
  	case "update":
@@ -60,7 +54,7 @@ String message = (String) request.getParameter("message");
 			<jsp:include page="../menu.jsp"></jsp:include>
 		</div>
 		<div class="col-sm-10">
-			<a href="<%=request.getContextPath() %>/Backend/ManageUser/addUser.jsp" ><button type="button" id="button-create">Thêm khóa học</button></a>
+			<a href="<%=request.getContextPath() %>/Backend/ManageCourse/addCourse.jsp" ><button type="button" id="button-create">Thêm khóa học</button></a>
 			<div class="row">
 				<div class="col-sm-4">
 					<button type="button" class="btn btn-primary">Sao chép</button>
@@ -72,10 +66,11 @@ String message = (String) request.getParameter("message");
 				<form action="<%=request.getContextPath()%>/AUDUser?command=filter" method="post">
 					<p>
 						Lọc theo : <span> 
-						<select style="width: 146px" name="typeUser">
-								<option value="2">Học viên</option>
-								<option value="3">Huấn luyện viên</option>
-								<option value="4">Nhân viên</option>
+						<select style="width: 146px" name="typeCourse">
+								<option value="GYM">GYM</option>
+								<option value="YOGA">YOGA</option>
+								<option value="DANCE">DANCE</option>
+								<option value="VIP">VIP</option>
 						</select>
 						</span>
 						<span><button type="submit" id="button-filter">Lọc</button></span>
@@ -98,6 +93,8 @@ String message = (String) request.getParameter("message");
 						<th>Huấn luyện viên chính</th>
 						<th>Thời gian bắt đầu</th>
 						<th>Thời gian kết thúc</th>
+						<th>Số lượng</th>
+						<th>Học phí </th>
 						<th></th>
 					</tr>
 				</thead>
@@ -117,8 +114,10 @@ String message = (String) request.getParameter("message");
 						<td><%=course.getTrainerName() %></td>
 						<td><%=course.getStartDate() %></td>
 						<td><%=course.getEndDate()%></td>
+						<td><%=course.getQuantity() %></td>
+						<td><%=course.getFee() %></td>
 						<td>
-							<a href="<%=request.getContextPath() %>/Backend/ManageUser/editUser.jsp?userID=<%=course.getCourseID()%>"><button type="button" class="btn btn-primary">Sửa</button></a>
+							<a href="<%=request.getContextPath() %>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button type="button" class="btn btn-primary">Sửa</button></a>
 							<button onclick="delUser(<%=course.getCourseID() %>)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">Xóa</button>
 						</td>
 					</tr>

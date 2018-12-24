@@ -39,6 +39,7 @@ public class Users {
 		this.description = description;
 	}
 	public Users() {}
+	
 	public int getUserID() {
 		return userID;
 	}
@@ -169,5 +170,6 @@ public class Users {
 				+ bankName + ", description=" + description + ", scheduleID=" + scheduleID
 				+ ", status=" + status + "]";
 	}
+	
 	
 }

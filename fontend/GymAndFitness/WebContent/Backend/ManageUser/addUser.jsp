@@ -48,7 +48,7 @@
 						</div>
 						<div class="form-group">
 							<label class="mb-2 mr-sm-2">Ngày sinh:</label> <input type="date"
-								name="dob" width="400" />
+								name="dob" class="form-control mb-2 mr-sm-2" width="400" />
 						</div>
 							<div class="form-check-inline" style="margin: 15px 0 10px 0">
 							<label class="mb-2 mr-sm-2">Giới tính: </label>
@@ -123,11 +123,11 @@
 						</div>
 						<div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
 							<label class="mb-2 mr-sm-2">Thời gian bắt đầu:</label> <input type="date"
-								name="startDate" />
+								name="startDate" class="form-control mb-2 mr-sm-2"/>
 						</div>
 						<div class="form-group" style="margin-top: 10px; margin-bottom: 10px">
 							<label class="mb-2 mr-sm-2">Thời gian kết thúc:</label> <input type="date"
-								name="endDate"  />
+								name="endDate" class="form-control mb-2 mr-sm-2" />
 						</div>
 						<div class="form-group">
 							<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:</label> <select
@@ -155,21 +155,14 @@
 				</div>
 				<p style="color: red"> * Là những dữ liệu bắt buộc</p>
 				<div class="button" >
-					<a href=""><button id="button-cancel" type="submit" name="command" value="cancel">Hủy</button></a>
-					<a href=""><button id="button-createUser" type="submit" name="command" value="add">Thêm User</button></a> 
-					<!--<input type="hidden" name="command" value="add">
-					<input type="submit" name="submit" class="btn btn-warning pull-right" value="Thêm User"> -->
+					<button id="button-cancel" type="submit" name="command" value="cancel">Hủy</button>
+					<button id="button-createUser" type="submit" name="command" value="add">Thêm User</button>
 				</div>
 			</form>
 
 		</div>
 	</div>
 </body>
-<script>
-	$('#datepicker').datepicker({
-	uiLibrary : 'bootstrap'
-								});
-</script>
 <style type="text/css">
 .form-inline{margin-top:10px}
 .form-inline .row .col-sm-6 .form-group label {

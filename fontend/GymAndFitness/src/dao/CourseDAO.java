@@ -6,4 +6,5 @@ import model.Course;
 
 public interface CourseDAO {
 List<Course> listCourse(); 
+void addCourse(Course course);
 }
