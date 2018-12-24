@@ -21,7 +21,8 @@
 <title>Danh sách User</title>
 </head>
 <body>
-<% String message = (String) request.getParameter("message");
+<% 
+String message = (String) request.getParameter("message");
 	if(message != null){
  	switch(message){
  	case "cancel":
@@ -116,7 +117,7 @@
 						<td><%=u.getName() %></td>
 						<td><%=u.getPhone() %></td>
 						<td><%=u.getEmail() %></td>
-						<td><%=u.getAddress() %></td>
+						<td><%=u.getCity()%>,<%=u.getTown()%> </td>
 						<%switch(u.getRoleID()){ 
 							case 1 :%>
 						<td>Nhân viên</td>
@@ -153,7 +154,7 @@
 						<td><%=u.getName() %></td>
 						<td><%=u.getPhone() %></td>
 						<td><%=u.getEmail() %></td>
-						<td><%=u.getAddress() %></td>
+						<td><%=u.getCity()%>,<%=u.getTown()%></td>
 						<%switch(u.getRoleID()){ 
 							case 1 :%>
 						<td>Nhân viên</td>
@@ -193,11 +194,11 @@
 									        </div>
 									      <!-- Modal body -->
 									        <div class="modal-body">
-									         <h4>Xác nhận xóa User ?</h4>
+									         <h4 style="padding-left: 25px">Xác nhận xóa User ?</h4>
 									        </div>
 									      <!-- Modal footer -->
 									        <div class="modal-footer" style="justify-content: center">
-									         	<button type="button" id="button-cancel" class="btn btn-secondary" data-dismiss="modal">Hủy</button> 
+									         	<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button> 
 									         	<a id="btn-del" class="btn btn-danger" >OK</a>
 									        </div>
 							      		</div>
@@ -215,6 +216,7 @@
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
+
 </style>
 
 </html>

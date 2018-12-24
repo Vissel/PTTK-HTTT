@@ -8,40 +8,53 @@ public class Users {
 	private String name;
 	private int roleID;
 	private int sex;
-	private Date bob;
+	private Date dob;
 	private String phone;
+	private String city;
+	private String town;
 	private String address;
 	private String email;
 	private String bankAccount;
 	private String bankName;
 	private String description;
-	private int courseID;
 	private int scheduleID;
 	private int status;
-	public Users(String userCode, String name, int roleID, Date bob, String phone, String address,
-			String bankAccount, String bankName, String description, int courseID, int scheduleID, int status, int sex,String email) {
+	
+	
+	public Users(String userCode, String name, int roleID, int sex, Date dob, String phone, String city, String town,
+			String address, String email, String bankAccount, String bankName, String description) {
 		super();
 		this.userCode = userCode;
 		this.name = name;
 		this.roleID = roleID;
-		this.bob = bob;
+		this.sex = sex;
+		this.dob = dob;
 		this.phone = phone;
+		this.city = city;
+		this.town = town;
 		this.address = address;
+		this.email = email;
 		this.bankAccount = bankAccount;
 		this.bankName = bankName;
 		this.description = description;
-		this.courseID = courseID;
-		this.scheduleID = scheduleID;
-		this.status = status;
-		this.sex = sex;
-		this.email = email;
 	}
-	
 	public Users() {}
 	public int getUserID() {
 		return userID;
 	}
 
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getTown() {
+		return town;
+	}
+	public void setTown(String town) {
+		this.town = town;
+	}
 	public void setUserID(int iD) {
 		userID = iD;
 	}
@@ -78,12 +91,12 @@ public class Users {
 		this.sex = sex;
 	}
 
-	public Date getBob() {
-		return bob;
+	public Date getDob() {
+		return dob;
 	}
 
-	public void setBob(Date bob) {
-		this.bob = bob;
+	public void setDob(Date bob) {
+		this.dob = bob;
 	}
 
 	public String getPhone() {
@@ -125,15 +138,6 @@ public class Users {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public int getCourseID() {
-		return courseID;
-	}
-
-	public void setCourseID(int courseID) {
-		this.courseID = courseID;
-	}
-
 	public int getScheduleID() {
 		return scheduleID;
 	}
@@ -160,9 +164,9 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [userCode=" + userCode + ", name=" + name + ", roleID=" + roleID + ", sex=" + sex + ", bob=" + bob
+		return "Users [userCode=" + userCode + ", name=" + name + ", roleID=" + roleID + ", sex=" + sex + ", bob=" + dob
 				+ ", phone=" + phone + ", address=" + address + ", bankAccount=" + bankAccount + ", bankName="
-				+ bankName + ", description=" + description + ", courseID=" + courseID + ", scheduleID=" + scheduleID
+				+ bankName + ", description=" + description + ", scheduleID=" + scheduleID
 				+ ", status=" + status + "]";
 	}
 	

@@ -42,6 +42,8 @@
 								<%switch(u.getRoleID()){ 
 								case 2 :%>
 								<option>Học viên</option>
+								<option>Huấn luyện viên</option>
+								<option>Nhân viên</option>
 								<%break;
 								case 3:%>
 								<option>Huấn luyện viên</option>
@@ -62,7 +64,7 @@
 						</div>
 						<div class="form-group">
 							<label class="mb-2 mr-sm-2">Ngày sinh:</label> <input type="date"
-								name="dob" width="400" value="<%=u.getBob()%>"/>
+								name="dob" width="400" value="<%=u.getDob()%>"/>
 						</div>
 							<div class="form-check-inline" style="margin: 15px 0 10px 0">
 							<label class="mb-2 mr-sm-2">Giới tính: </label>
@@ -87,6 +89,7 @@
 						<div class="form-group">
 							<label for="typeUser" class="mb-2 mr-sm-2">Tỉnh / TP:</label> <select
 								class="form-control" style="width: 300px; margin-bottom: 7px" name="city">
+								<option><%=u.getCity() %></option>
 								<option>TPHCM</option>
 								<option>Hà Nội</option>
 								<option>Cần Thơ</option>
@@ -96,6 +99,7 @@
 							<label for="typeUser" class="mb-2 mr-sm-2">Huyện / Quận :</label>
 							<select class="form-control"
 								style="width: 300px; margin-bottom: 7px" name="town">
+								<option><%=u.getTown()%></option>
 								<option>Quận 1</option>
 								<option>Quận 2</option>
 								<option>Quận 3</option>
@@ -124,7 +128,7 @@
 					<div class="col-sm-6">
 						<h4 style="text-align: center; ">Thông tin khóa học</h4>
 						<div class="form-group">
-							<label class="mb-2 mr-sm-2">Mã khóa học:<span id="mandatory">*</span></label> <select
+							<label class="mb-2 mr-sm-2">Mã khóa học:</label> <select
 								class="form-control" style="width: 300px; margin-bottom: 7px" name="courseCode">
 								<option></option>
 								<option>GYM1AH</option>
@@ -133,7 +137,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label  class="mb-2 mr-sm-2">Tên Khóa học:<span id="mandatory">*</span></label> <input
+							<label  class="mb-2 mr-sm-2">Tên Khóa học:</label> <input
 								type="text" class="form-control mb-2 mr-sm-2" name="courseName"
 								placeholder="Tên khóa học">
 						</div>
@@ -146,7 +150,7 @@
 								name="endDate"  />
 						</div>
 						<div class="form-group">
-							<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:<span id="mandatory">*</span></label> <select
+							<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:</label> <select
 								class="form-control" style="width: 300px; margin-bottom: 7px" name="trainerCode">
 								<option>HLV001</option>
 								<option>HLV101</option>
@@ -154,7 +158,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label  class="mb-2 mr-sm-2">Tên huấn luyện viên:<span id="mandatory">*</span></label> <input
+							<label  class="mb-2 mr-sm-2">Tên huấn luyện viên:</label> <input
 								type="text" class="form-control mb-2 mr-sm-2" name="trainerName"
 								placeholder="Tên huấn luyện viên">
 						</div>
@@ -180,11 +184,6 @@
 		</div>
 	</div>
 </body>
-<script>
-	$('#datepicker').datepicker({
-	uiLibrary : 'bootstrap'
-								});
-</script>
 <style type="text/css">
 .form-inline{margin-top:10px}
 .form-inline .row .col-sm-6 .form-group label {

@@ -109,7 +109,7 @@
 					<div class="col-sm-6">
 						<h4 style="text-align: center; ">Thông tin khóa học</h4>
 						<div class="form-group">
-							<label class="mb-2 mr-sm-2">Mã khóa học:<span id="mandatory">*</span></label> <select
+							<label class="mb-2 mr-sm-2">Mã khóa học:</label> <select
 								class="form-control" style="width: 300px; margin-bottom: 7px" name="courseCode">
 								<option>GYM1AH</option>
 								<option>YOGA1BA</option>
@@ -117,7 +117,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label  class="mb-2 mr-sm-2">Tên Khóa học:<span id="mandatory">*</span></label> <input
+							<label  class="mb-2 mr-sm-2">Tên Khóa học:</label> <input
 								type="text" class="form-control mb-2 mr-sm-2" name="courseName"
 								placeholder="Tên khóa học">
 						</div>
@@ -130,7 +130,7 @@
 								name="endDate"  />
 						</div>
 						<div class="form-group">
-							<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:<span id="mandatory">*</span></label> <select
+							<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:</label> <select
 								class="form-control" style="width: 300px; margin-bottom: 7px" name="trainerCode">
 								<option>HLV001</option>
 								<option>HLV101</option>
@@ -138,7 +138,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label  class="mb-2 mr-sm-2">Tên huấn luyện viên:<span id="mandatory">*</span></label> <input
+							<label  class="mb-2 mr-sm-2">Tên huấn luyện viên:</label> <input
 								type="text" class="form-control mb-2 mr-sm-2" name="trainerName"
 								placeholder="Tên huấn luyện viên">
 						</div>

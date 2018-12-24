@@ -63,17 +63,17 @@ public class UserDAOImpl implements UserDAO {
 					u.setUserCode(rs.getString(2));
 					u.setName(rs.getString(3));
 					u.setRoleID(rs.getInt(4));
-					u.setBob(rs.getDate(5));
-					u.setPhone(rs.getString(6));
-					u.setAddress(rs.getString(7));
-					u.setBankAccount(rs.getString(8));
-					u.setBankName(rs.getString(9));
-					u.setDescription(rs.getString(10));
-					u.setCourseID(rs.getInt(11));
-					u.setScheduleID(rs.getInt(12));
-					u.setStatus(rs.getInt(13));
-					u.setSex(rs.getInt(14));
-					u.setEmail(rs.getString(15));
+					u.setSex(rs.getInt(5));
+					u.setDob(rs.getDate(6));
+					u.setPhone(rs.getString(7));
+					u.setCity(rs.getString(8));
+					u.setTown(rs.getString(9));
+					u.setAddress(rs.getString(10));
+					u.setEmail(rs.getString(11));
+					u.setBankAccount(rs.getString(12));
+					u.setBankName(rs.getString(13));
+					u.setDescription(rs.getString(14));
+					
 					listUser.add(u);
 				}
 				rs.close();
@@ -100,14 +100,16 @@ public class UserDAOImpl implements UserDAO {
 				u.setUserCode(rs.getString(2));
 				u.setName(rs.getString(3));
 				u.setRoleID(rs.getInt(4));
-				u.setBob(rs.getDate(5));
-				u.setPhone(rs.getString(6));
-				u.setAddress(rs.getString(7));
-				u.setBankAccount(rs.getString(8));
-				u.setBankName(rs.getString(9));
-				u.setDescription(rs.getString(10));
-				u.setSex(rs.getInt(14));
-				u.setEmail(rs.getString(15));
+				u.setSex(rs.getInt(5));
+				u.setDob(rs.getDate(6));
+				u.setPhone(rs.getString(7));
+				u.setCity(rs.getString(8));
+				u.setTown(rs.getString(9));
+				u.setAddress(rs.getString(10));
+				u.setEmail(rs.getString(11));
+				u.setBankAccount(rs.getString(12));
+				u.setBankName(rs.getString(13));
+				u.setDescription(rs.getString(14));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -119,21 +121,26 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void addUser(Users user) {
 		connection = ConnectDB.getConnection();
-		String sql = "INSERT INTO USERS(USERS_CODE,USERS_NAME,DATEOFBIR,PHONE,ADDRESS,BANK_ACCOUNT,BANK_NAME,USERS_DESCRIPTION,SEX,EMAIL,USERS_ROLE) "
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO USERS(USERS_CODE,USERS_NAME,USERS_ROLE,SEX,DATEOFBIR,PHONE,CITY,TOWN,ADDRESS,EMAIL,BANK_ACCOUNT,BANK_NAME,USERS_DESCRIPTION) "
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement prepared = connection.prepareStatement(sql);
 			prepared.setString(1, user.getUserCode());
 			prepared.setString(2, user.getName());
-			prepared.setDate(3, user.getBob());
-			prepared.setString(4, user.getPhone());
-			prepared.setString(5, user.getAddress());
-			prepared.setString(6, user.getBankAccount());
-			prepared.setString(7, user.getBankName());
-			prepared.setString(8, user.getDescription());
-			prepared.setInt(9, user.getSex());
+			prepared.setInt(3, user.getRoleID());
+			prepared.setInt(4, user.getSex());
+			prepared.setDate(5, user.getDob());
+			prepared.setString(6, user.getPhone());
+			prepared.setString(7, user.getCity());
+			prepared.setString(8, user.getTown());
+			prepared.setString(9, user.getAddress());
 			prepared.setString(10, user.getEmail());
-			prepared.setInt(11, user.getRoleID());
+			prepared.setString(11, user.getBankAccount());
+			prepared.setString(12, user.getBankName());
+			prepared.setString(13, user.getDescription());
+			
+			
+			
 
 			prepared.executeUpdate();
 			prepared.close();
@@ -149,23 +156,25 @@ public class UserDAOImpl implements UserDAO {
 	public void updateUser(Users user, int userID) {
 		connection = ConnectDB.getConnection();
 		String sql = "UPDATE USERS\r\n" + 
-				"SET USERS_CODE=?,USERS_NAME=?,DATEOFBIR=?,PHONE=?,ADDRESS=?,BANK_ACCOUNT=?,BANK_NAME=?,USERS_DESCRIPTION=?,SEX=?,EMAIL=?,USERS_ROLE=?\r\n" + 
+				"SET USERS_CODE=?,USERS_NAME=?,USERS_ROLE=?,SEX=?,DATEOFBIR=?,PHONE=?,CITY=?,TOWN=?,ADDRESS=?,EMAIL=?,BANK_ACCOUNT=?,BANK_NAME=?,USERS_DESCRIPTION=?\r\n" + 
 				"WHERE USERS_ID = ?";
 		try {
 			PreparedStatement prepared = connection.prepareStatement(sql);
 			prepared.setString(1, user.getUserCode());
 			prepared.setString(2, user.getName());
-			prepared.setDate(3, user.getBob());
-			prepared.setString(4, user.getPhone());
-			prepared.setString(5, user.getAddress());
-			prepared.setString(6, user.getBankAccount());
-			prepared.setString(7, user.getBankName());
-			prepared.setString(8, user.getDescription());
-			prepared.setInt(9, user.getSex());
+			prepared.setInt(3, user.getRoleID());
+			prepared.setInt(4, user.getSex());
+			prepared.setDate(5, user.getDob());
+			prepared.setString(6, user.getPhone());
+			prepared.setString(7, user.getCity());
+			prepared.setString(8, user.getTown());
+			prepared.setString(9, user.getAddress());
 			prepared.setString(10, user.getEmail());
-			prepared.setInt(11, user.getRoleID());
+			prepared.setString(11, user.getBankAccount());
+			prepared.setString(12, user.getBankName());
+			prepared.setString(13, user.getDescription());
 			
-			prepared.setInt(12, userID);
+			prepared.setInt(14, userID);
 			
 			prepared.executeUpdate();
 			prepared.close();
@@ -212,17 +221,16 @@ public class UserDAOImpl implements UserDAO {
 				u.setUserCode(rs.getString(2));
 				u.setName(rs.getString(3));
 				u.setRoleID(rs.getInt(4));
-				u.setBob(rs.getDate(5));
-				u.setPhone(rs.getString(6));
-				u.setAddress(rs.getString(7));
-				u.setBankAccount(rs.getString(8));
-				u.setBankName(rs.getString(9));
-				u.setDescription(rs.getString(10));
-				u.setCourseID(rs.getInt(11));
-				u.setScheduleID(rs.getInt(12));
-				u.setStatus(rs.getInt(13));
-				u.setSex(rs.getInt(14));
-				u.setEmail(rs.getString(15));
+				u.setSex(rs.getInt(5));
+				u.setDob(rs.getDate(6));
+				u.setPhone(rs.getString(7));
+				u.setCity(rs.getString(8));
+				u.setTown(rs.getString(9));
+				u.setAddress(rs.getString(10));
+				u.setEmail(rs.getString(11));
+				u.setBankAccount(rs.getString(12));
+				u.setBankName(rs.getString(13));
+				u.setDescription(rs.getString(14));
 				list.add(u);
 			}
 		} catch (SQLException e) {

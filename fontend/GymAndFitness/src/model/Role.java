@@ -1,6 +1,7 @@
 package model;
 
 public class Role {
+	private int roleID;
 	private String roleCode;
 	private String roleName;
 	private String description;
@@ -14,6 +15,12 @@ public class Role {
 	}
 	public Role() {}
 	
+	public int getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(int roleID) {
+		this.roleID = roleID;
+	}
 	public String getRoleCode() {
 		return roleCode;
 	}

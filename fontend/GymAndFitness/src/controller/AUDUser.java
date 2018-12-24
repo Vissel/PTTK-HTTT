@@ -92,21 +92,23 @@ public class AUDUser extends HttpServlet {
 			
 			user.setUserCode(codeUser);
 			user.setName(nameUser);
-			user.setBob(Date.valueOf(dob)); // date type
+			user.setDob(Date.valueOf(dob)); // date type
 			
 			if(sex.equals("Nam")) user.setSex(1); else user.setSex(2); // sex under DB is int type
 			
 			user.setPhone(phone);
 			user.setEmail(email);
-			user.setAddress(address + town + city);
+			user.setCity(city);
+			user.setTown(town);
+			user.setAddress(address);
 			
-			switch (courseCode) { // course code
-			case "GYM1AH":
-				user.setCourseID(1);
-				break;
-			default:
-				break;
-			}
+//			switch (courseCode) { // course code
+//			case "GYM1AH":
+//				user.setCourseID(1);
+//				break;
+//			default:
+//				break;
+//			}
 			user.setBankAccount(bankAccount);
 			user.setBankName(bankName);
 			user.setDescription(description);
@@ -135,21 +137,23 @@ public class AUDUser extends HttpServlet {
 			
 			user.setUserCode(codeUser);
 			user.setName(nameUser);
-			user.setBob(Date.valueOf(dob)); // date type
+			user.setDob(Date.valueOf(dob)); // date type
 			
 			if(sex.equals("Nam")) user.setSex(1); else user.setSex(2); // sex under DB is int type
 			
 			user.setPhone(phone);
 			user.setEmail(email);
-			user.setAddress(address + town + city);
+			user.setCity(city);
+			user.setTown(town);
+			user.setAddress(address);
 			
-			switch (courseCode) { // course code
-			case "GYM1AH":
-				user.setCourseID(1);
-				break;
-			default:
-				break;
-			}
+//			switch (courseCode) { // course code
+//			case "GYM1AH":
+//				user.setCourseID(1);
+//				break;
+//			default:
+//				break;
+//			}
 			user.setBankAccount(bankAccount);
 			user.setBankName(bankName);
 			user.setDescription(description);
@@ -184,7 +188,7 @@ public class AUDUser extends HttpServlet {
 		}catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 
 }
