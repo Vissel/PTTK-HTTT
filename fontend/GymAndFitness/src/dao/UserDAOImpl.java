@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Role;
 import model.Users;
 
 public class UserDAOImpl implements UserDAO {
@@ -21,6 +22,9 @@ public class UserDAOImpl implements UserDAO {
 	// test
 	public static void main(String[] args) {
 		UserDAOImpl test = new UserDAOImpl();
+		/////////test role
+		List<Role> list = test.getRole();
+		for(Role r : list) System.out.println(r.toString());
 		///////// test get all user
 //		List<Users> list = test.getAllUser();
 //		if (!list.isEmpty())
@@ -37,10 +41,36 @@ public class UserDAOImpl implements UserDAO {
 		///////// test delete
 //		test.deleteUser(14);
 		///////// test filter
-		List<Users> list = test.filterUser("4");
-		for(Users u : list) System.out.println(u.toString());
+//		List<Users> list = test.filterUser("4");
+//		for(Users u : list) System.out.println(u.toString());
 	}
-
+	
+	@Override
+	public List<Role> getRole() {
+		List<Role> listRole = new ArrayList<>();
+		connection = ConnectDB.getConnection();
+		String sql = "SELECT * FROM ROLE";
+		try {
+			PreparedStatement prepared = connection.prepareStatement(sql);
+			ResultSet rs = prepared.executeQuery();
+			Role role ;
+			while(rs.next()) {
+				role = new Role();
+				role.setRoleID(rs.getInt(1));
+				role.setRoleCode(rs.getString(2));
+				role.setRoleName(rs.getString(3));
+				listRole.add(role);
+			}
+			rs.close();
+			prepared.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listRole;
+	}
 	@Override
 	public ArrayList<Users> getAllUser() {
 		ArrayList<Users> listUser = null;
@@ -66,8 +96,8 @@ public class UserDAOImpl implements UserDAO {
 					u.setSex(rs.getInt(5));
 					u.setDob(rs.getDate(6));
 					u.setPhone(rs.getString(7));
-					u.setCity(rs.getString(8));
-					u.setTown(rs.getString(9));
+					u.setCity(rs.getInt(8));
+					u.setTown(rs.getInt(9));
 					u.setAddress(rs.getString(10));
 					u.setEmail(rs.getString(11));
 					u.setBankAccount(rs.getString(12));
@@ -103,8 +133,8 @@ public class UserDAOImpl implements UserDAO {
 				u.setSex(rs.getInt(5));
 				u.setDob(rs.getDate(6));
 				u.setPhone(rs.getString(7));
-				u.setCity(rs.getString(8));
-				u.setTown(rs.getString(9));
+				u.setCity(rs.getInt(8));
+				u.setTown(rs.getInt(9));
 				u.setAddress(rs.getString(10));
 				u.setEmail(rs.getString(11));
 				u.setBankAccount(rs.getString(12));
@@ -131,8 +161,8 @@ public class UserDAOImpl implements UserDAO {
 			prepared.setInt(4, user.getSex());
 			prepared.setDate(5, user.getDob());
 			prepared.setString(6, user.getPhone());
-			prepared.setString(7, user.getCity());
-			prepared.setString(8, user.getTown());
+			prepared.setInt(7, user.getCity());
+			prepared.setInt(8, user.getTown());
 			prepared.setString(9, user.getAddress());
 			prepared.setString(10, user.getEmail());
 			prepared.setString(11, user.getBankAccount());
@@ -166,8 +196,8 @@ public class UserDAOImpl implements UserDAO {
 			prepared.setInt(4, user.getSex());
 			prepared.setDate(5, user.getDob());
 			prepared.setString(6, user.getPhone());
-			prepared.setString(7, user.getCity());
-			prepared.setString(8, user.getTown());
+			prepared.setInt(7, user.getCity());
+			prepared.setInt(8, user.getTown());
 			prepared.setString(9, user.getAddress());
 			prepared.setString(10, user.getEmail());
 			prepared.setString(11, user.getBankAccount());
@@ -224,8 +254,8 @@ public class UserDAOImpl implements UserDAO {
 				u.setSex(rs.getInt(5));
 				u.setDob(rs.getDate(6));
 				u.setPhone(rs.getString(7));
-				u.setCity(rs.getString(8));
-				u.setTown(rs.getString(9));
+				u.setCity(rs.getInt(8));
+				u.setTown(rs.getInt(9));
 				u.setAddress(rs.getString(10));
 				u.setEmail(rs.getString(11));
 				u.setBankAccount(rs.getString(12));
@@ -241,5 +271,7 @@ public class UserDAOImpl implements UserDAO {
 		
 		return list;
 	}
+
+	
 
 }

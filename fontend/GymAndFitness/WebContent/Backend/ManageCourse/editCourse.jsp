@@ -15,10 +15,10 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/Backend/css/style.css">
 <meta charset="UTF-8">
-<title>Tạo mới khóa học</title>
+<title>Chỉnh sửa khóa học</title>
 </head>
 <body>
-	<h1>Tạo khóa học</h1>
+	<h1>Chỉnh sửa khóa học</h1>
 	<div class="row">
 		<div class="col-sm-2">
 			<jsp:include page="../menu.jsp"></jsp:include>

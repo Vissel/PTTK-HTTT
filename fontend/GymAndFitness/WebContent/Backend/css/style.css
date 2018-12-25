@@ -67,7 +67,7 @@ h1 {
 #button-cancel {
 	border-width: 0;
 	position: relative;
-	width: 116px;
+	width: 140px;
 	height: 40px;
 	background-color: #333333;
 	border: none;
@@ -80,7 +80,7 @@ h1 {
 #button-cancel:hover{
 	background-color: rgb(128, 128, 128);
 }
-#btn-del {
+#button-OK {
 	border-width: 0;
 	position: relative;
 	width: 140px;
@@ -93,6 +93,6 @@ h1 {
 	color: white;
 	cursor: pointer;
 }
-#btn-del:hover{
+#button-OK:hover{
 	background-color: rgb(128, 128, 128);
 }

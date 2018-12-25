@@ -3,9 +3,11 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Role;
 import model.Users;
 
 public interface UserDAO {
+	public List<Role> getRole();
 	public ArrayList<Users> getAllUser();
 	public Users getOneUser(String userID);
 	public void addUser(Users user);

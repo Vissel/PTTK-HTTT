@@ -10,8 +10,8 @@ public class Users {
 	private int sex;
 	private Date dob;
 	private String phone;
-	private String city;
-	private String town;
+	private int city;
+	private int town;
 	private String address;
 	private String email;
 	private String bankAccount;
@@ -21,7 +21,7 @@ public class Users {
 	private int status;
 	
 	
-	public Users(String userCode, String name, int roleID, int sex, Date dob, String phone, String city, String town,
+	public Users(String userCode, String name, int roleID, int sex, Date dob, String phone, int city, int town,
 			String address, String email, String bankAccount, String bankName, String description) {
 		super();
 		this.userCode = userCode;
@@ -40,20 +40,24 @@ public class Users {
 	}
 	public Users() {}
 	
+	public String nameCityTown(int cityID,int townID) {
+		City city = new City();
+		return city.getNameCityTown(cityID,townID);
+	}
 	public int getUserID() {
 		return userID;
 	}
 
-	public String getCity() {
+	public int getCity() {
 		return city;
 	}
-	public void setCity(String city) {
+	public void setCity(int city) {
 		this.city = city;
 	}
-	public String getTown() {
+	public int getTown() {
 		return town;
 	}
-	public void setTown(String town) {
+	public void setTown(int town) {
 		this.town = town;
 	}
 	public void setUserID(int iD) {

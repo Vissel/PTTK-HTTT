@@ -45,5 +45,10 @@ public class Role {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "Role [roleID=" + roleID + ", roleCode=" + roleCode + ", roleName=" + roleName + ", description="
+				+ description + ", status=" + status + "]";
+	}
 	
 }
