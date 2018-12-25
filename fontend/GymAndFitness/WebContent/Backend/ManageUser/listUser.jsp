@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="dao.UserDAOImpl"%>
+<%@page import="dao.ConfigureDAOImpl"%>
 <%@page import="model.Users"%>
 <%@page import="model.Role"%>
 <%@page import="java.util.List"%>
@@ -78,7 +79,8 @@
 	<%
 		}
 	%>
-	<%	UserDAOImpl dao = new UserDAOImpl();%>
+	<%	UserDAOImpl dao = new UserDAOImpl();
+		%>
 	<div class="container-fluid" style="color: black">
 		<div class="row">
 			<!-- Main Sidebar -->
@@ -163,36 +165,10 @@
 												<td><%=u.getPhone()%></td>
 												<td><%=u.getEmail()%></td>
 												<td><%=u.getCity()%>,<%=u.getTown()%></td>
-												<%
-													switch (u.getRoleID()) {
-																case 1 :
-												%>
-												<td>Nhân viên</td>
-												<%
-													break;
-																case 2 :
-												%>
-												<td>Học viên</td>
-												<%
-													break;
-																case 3 :
-												%>
-												<td>Huấn luyện viên</td>
-												<%
-													break;
-																case 4 :
-												%>
-												<td>Nhân viên</td>
-												<%
-													break;
-																default :
-												%>
-												<td></td>
-
-												<%
-													break;
-															}
-												%>
+												<% for(Role role : dao.getRole()){
+													if(role.getRoleID() == u.getRoleID()){%>
+												<td><%=role.getRoleName() %></td>
+													<%}}%>
 												<td><a
 													href="<%=request.getContextPath()%>/Backend/ManageUser/editUser.jsp?userID=<%=u.getUserID()%>"><button
 															type="button" class="btn btn-primary">Sửa</button></a>
@@ -217,37 +193,11 @@
 												<td><%=u.getName()%></td>
 												<td><%=u.getPhone()%></td>
 												<td><%=u.getEmail()%></td>
-												<td><%=u.getCity()%>,<%=u.getTown()%></td>
-												<%
-													switch (u.getRoleID()) {
-																case 1 :
-												%>
-												<td>Nhân viên</td>
-												<%
-													break;
-																case 2 :
-												%>
-												<td>Học viên</td>
-												<%
-													break;
-																case 3 :
-												%>
-												<td>Huấn luyện viên</td>
-												<%
-													break;
-																case 4 :
-												%>
-												<td>Nhân viên</td>
-												<%
-													break;
-																default :
-												%>
-												<td></td>
-
-												<%
-													break;
-															}
-												%>
+												<td><%=u.nameCityTown(u.getCity(), u.getTown())%></td>
+												<% for(Role role : dao.getRole()){
+													if(role.getRoleID() == u.getRoleID()){%>
+												<td><%=role.getRoleName() %></td>
+													<%}}%>
 												<td><a
 													href="<%=request.getContextPath()%>/Backend/ManageUser/editUser.jsp?userID=<%=u.getUserID()%>"><button
 															type="button" class="btn btn-primary">Sửa</button></a>
@@ -283,7 +233,7 @@
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<h4 style="padding-left: 25px">Xác nhận xóa User ?</h4>
+					<h4 >Xác nhận xóa User ?</h4>
 				</div>
 				<!-- Modal footer -->
 				<div class="modal-footer" style="justify-content: center">

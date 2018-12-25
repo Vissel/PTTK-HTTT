@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Date;
 
+import dao.ConfigureDAOImpl;
+
 public class Users {
 	private int userID;
 	private String userCode;
@@ -44,6 +46,10 @@ public class Users {
 		City city = new City();
 		return city.getNameCityTown(cityID,townID);
 	}
+//	public String nameRole(int rID) {
+//		ConfigureDAOImpl config = new ConfigureDAOImpl();
+//		return config.nameRole(rID);
+//	}
 	public int getUserID() {
 		return userID;
 	}

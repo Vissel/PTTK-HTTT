@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ConfigureDAO;
+import dao.ConfigureDAOImpl;
 
 public class City {
 private int cityID;
@@ -13,9 +14,8 @@ List<Town> listTown;
 public City() {listTown = new ArrayList<Town>();}
 
 public String getNameCityTown(int cityID2, int townID) {
-	ConfigureDAO city = new  
-			
-	return null;
+	ConfigureDAO city = new ConfigureDAOImpl();
+	return city.getCityTown(cityID2, townID);
 }
 
 public int getCityID() {

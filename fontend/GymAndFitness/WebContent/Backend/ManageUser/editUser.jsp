@@ -3,6 +3,10 @@
 	pageEncoding="UTF-8"%>
 <%@page import="dao.UserDAOImpl"%>
 <%@page import="model.Users"%>
+<%@page import="dao.ConfigureDAOImpl"%>
+<%@page import="model.Role"%>
+<%@page import="model.City"%>
+<%@page import="model.Town"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -45,10 +49,11 @@
 			class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
 		<jsp:include page="../slidebar.jsp"></jsp:include> <!-- / .main-navbar -->
 		<div class="main-content-container container-fluid px-4">
-			<div class="col-sm-10" style="color:black">
+			<div class="col-sm-10" style="color: black">
 				<h1 style="margin-bottom: 50px; margin-top: 20px">Chỉnh User</h1>
 				<%
 					UserDAOImpl dao = new UserDAOImpl();
+					ConfigureDAOImpl configure = new ConfigureDAOImpl();
 					String userID = (String) request.getParameter("userID");
 					Users u = dao.getOneUser(userID);
 				%>
@@ -61,25 +66,16 @@
 									id="mandatory">*</span></label> <select class="form-control"
 									style="width: 250px; margin-bottom: 7px" name="typeUser">
 									<%
-										switch (u.getRoleID()) {
-										case 2:
+										for (Role role : dao.getRole()) {
+											if (role.getRoleID() == u.getRoleID()) {
 									%>
-									<option>Học viên</option>
-									<option>Huấn luyện viên</option>
-									<option>Nhân viên</option>
+									<option value="<%=role.getRoleID()%>" selected="selected"><%=role.getRoleName()%></option>
 									<%
-										break;
-										case 3:
+										} else {
 									%>
-									<option>Huấn luyện viên</option>
+									<option value="<%=role.getRoleID()%>"><%=role.getRoleName()%></option>
 									<%
-										case 4:
-									%>
-									<option>Nhân viên</option>
-									<%
-										break;
-										default:
-											break;
+										}
 										}
 									%>
 								</select>
@@ -97,7 +93,8 @@
 							</div>
 							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Ngày sinh:</label> <input
-									type="date" name="dob" width="400" value="<%=u.getDob()%>" class="form-control mb-2 mr-sm-2"/>
+									type="date" name="dob" width="400" value="<%=u.getDob()%>"
+									class="form-control mb-2 mr-sm-2" />
 							</div>
 							<div class="form-check-inline" style="margin: 15px 0 10px 0">
 								<label class="mb-2 mr-sm-2">Giới tính: </label> <label
@@ -125,23 +122,25 @@
 								<label for="typeUser" class="mb-2 mr-sm-2">Tỉnh / TP:</label> <select
 									class="form-control" style="width: 250px; margin-bottom: 7px"
 									name="city">
-									<option><%=u.getCity()%></option>
-									<option>TPHCM</option>
-									<option>Hà Nội</option>
-									<option>Cần Thơ</option>
+									<%for(City city : configure.listCity()){
+										if(city.getCityID() == u.getCity()){%>
+									<option value="<%=city.getCityID()%>" selected="selected"><%=city.getCityName() %></option>
+									<%}else{ %>
+									<option value="<%=city.getCityID()%>" ><%=city.getCityName() %></option>
+									<%}
+									}%>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="typeUser" class="mb-2 mr-sm-2">Huyện / Quận
 									:</label> <select class="form-control"
 									style="width: 250px; margin-bottom: 7px" name="town">
-									<option><%=u.getTown()%></option>
-									<option>Quận 1</option>
-									<option>Quận 2</option>
-									<option>Quận 3</option>
-									<option>Quận Thủ đức</option>
-									<option>Quận 9</option>
-									<option>Quận 10</option>
+									<%for(Town town : configure.listTown()){
+										if(town.getTownID() == u.getTown()){%>
+									<option value="<%=town.getTownID()%>" selected="selected"><%=town.getTownName() %></option>
+									<%}else{ %>
+									<option value="<%=town.getTownID()%>" ><%=town.getTownName() %></option>
+									<%}} %>
 								</select>
 							</div>
 							<div class="form-group">
@@ -180,13 +179,13 @@
 							</div>
 							<div class="form-group"
 								style="margin-top: 10px; margin-bottom: 10px">
-								<label class="mb-2 mr-sm-2">Thời gian bắt đầu:</label> <input class="form-control mb-2 mr-sm-2"
-									type="date" name="startDate" />
+								<label class="mb-2 mr-sm-2">Thời gian bắt đầu:</label> <input
+									class="form-control mb-2 mr-sm-2" type="date" name="startDate" />
 							</div>
 							<div class="form-group"
 								style="margin-top: 10px; margin-bottom: 10px">
-								<label class="mb-2 mr-sm-2">Thời gian kết thúc:</label> <input class="form-control mb-2 mr-sm-2"
-									type="date" name="endDate" />
+								<label class="mb-2 mr-sm-2">Thời gian kết thúc:</label> <input
+									class="form-control mb-2 mr-sm-2" type="date" name="endDate" />
 							</div>
 							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:</label> <select
@@ -208,8 +207,10 @@
 									placeholder="Học phí">
 							</div>
 							<div class="form-group">
-								<p style="margin-bottom: 0">Ghi chú</p><br>
-								<textarea rows="6" cols="75" name="description" class="form-control"></textarea>
+								<p style="margin-bottom: 0">Ghi chú</p>
+								<br>
+								<textarea rows="6" cols="75" name="description"
+									class="form-control"></textarea>
 							</div>
 							<input type="hidden" name="userID" value="<%=u.getUserID()%>">
 						</div>

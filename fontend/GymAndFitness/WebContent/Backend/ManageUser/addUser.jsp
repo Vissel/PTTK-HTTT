@@ -1,7 +1,11 @@
+<%@page import="dao.ConfigureDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="dao.UserDAOImpl"%>
+<%@page import="dao.ConfigureDAOImpl"%>
 <%@page import="model.Role"%>
+<%@page import="model.City"%>
+<%@page import="model.Town"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -34,7 +38,8 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
-<%	UserDAOImpl dao = new UserDAOImpl();%>
+<%	UserDAOImpl dao = new UserDAOImpl();
+	ConfigureDAOImpl configure = new ConfigureDAOImpl(); %>
 	<div class="row">
 		<div class="col-sm-2">
 			<jsp:include page="../menu.jsp"></jsp:include>
@@ -99,21 +104,18 @@
 								<label for="typeUser" class="mb-2 mr-sm-2">Tỉnh / TP:</label> <select
 									class="form-control" style="width: 250px; margin-bottom: 7px"
 									name="city">
-									<option>TP HCM</option>
-									<option>Hà Nội</option>
-									<option>Cần Thơ</option>
+									<%for(City city : configure.listCity()){ %>
+									<option value="<%=city.getCityID()%>"><%=city.getCityName() %></option>
+									<%} %>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="typeUser" class="mb-2 mr-sm-2">Huyện / Quận
 									:</label> <select class="form-control"
 									style="width: 250px; margin-bottom: 7px" name="town">
-									<option>Quận 1</option>
-									<option>Quận 2</option>
-									<option>Quận 3</option>
-									<option>Quận Thủ đức</option>
-									<option>Quận 9</option>
-									<option>Quận 10</option>
+									<%for(Town town : configure.listTown()){ %>
+									<option value="<%=town.getTownID()%>"><%=town.getTownName() %></option>
+									<%} %>
 								</select>
 							</div>
 							<div class="form-group">

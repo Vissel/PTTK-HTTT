@@ -76,20 +76,7 @@ public class AUDUser extends HttpServlet {
 		case "add":
 			user = new Users();
 			
-			switch (typeUser) {
-			case "Học viên":
-				user.setRoleID(2);
-				break;
-			case "Huấn luyện viên":
-				user.setRoleID(3);
-				break;
-			case "Nhân viên":
-				user.setRoleID(4);
-				break;
-			default:user.setRoleID(0);
-				break;
-			}
-			
+			user.setRoleID(Integer.parseInt(typeUser));
 			user.setUserCode(codeUser);
 			user.setName(nameUser);
 			user.setDob(Date.valueOf(dob)); // date type
@@ -98,8 +85,8 @@ public class AUDUser extends HttpServlet {
 			
 			user.setPhone(phone);
 			user.setEmail(email);
-			user.setCity(city);
-			user.setTown(town);
+			user.setCity(Integer.parseInt(city));
+			user.setTown(Integer.parseInt(town));
 			user.setAddress(address);
 			
 //			switch (courseCode) { // course code
@@ -143,8 +130,8 @@ public class AUDUser extends HttpServlet {
 			
 			user.setPhone(phone);
 			user.setEmail(email);
-			user.setCity(city);
-			user.setTown(town);
+			user.setCity(Integer.parseInt(city));
+			user.setTown(Integer.parseInt(town));
 			user.setAddress(address);
 			
 //			switch (courseCode) { // course code
