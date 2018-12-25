@@ -22,15 +22,15 @@ public class Course {
 	private long quantity;
 	private String actor;
 	private float fee;
-	private String city;
-	private String town;
+	private int city;
+	private int town;
 	private String address;
 	
 	private int status;
 	
 	public Course(String courseCode, String courseName, String description, int courseType, Date startDate,
 			Date endDate, int trainerID, String trainerCode, String trainerName, long quantity, String actor, float fee,
-			String city, String town, String address) {
+			int city, int town, String address) {
 		super();
 		this.courseCode = courseCode;
 		this.courseName = courseName;
@@ -131,17 +131,6 @@ public class Course {
 	public void setTrainerID(int id) {
 		this.trainerID = id;
 	}
-	public void transCodeToId(String trainerCode) {
-		int id=0;
-		List<Users> list = new UserDAOImpl().getAllUser();
-		for(Users u : list) {
-			if(u.getUserCode().equalsIgnoreCase(trainerCode)) {
-				id = u.getUserID(); break;
-			}
-		}
-		this.trainerID = id;
-	}
-
 	public long getQuantity() {
 		return quantity;
 	}
@@ -166,19 +155,19 @@ public class Course {
 		this.fee = fee;
 	}
 
-	public String getCity() {
+	public int getCity() {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(int city) {
 		this.city = city;
 	}
 
-	public String getTown() {
+	public int getTown() {
 		return town;
 	}
 
-	public void setTown(String town) {
+	public void setTown(int town) {
 		this.town = town;
 	}
 

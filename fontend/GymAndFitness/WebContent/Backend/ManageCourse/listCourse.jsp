@@ -112,7 +112,7 @@
 									</div>
 									<div class="col-sm-4">
 										<form
-											action="<%=request.getContextPath()%>/AUDUser?command=filter"
+											action="<%=request.getContextPath()%>/AUDCourse?command=filter"
 											method="post">
 											<p>
 												Lọc theo : <span> <select
@@ -141,21 +141,50 @@
 										style="text-align: center">
 										<thead>
 											<tr>
-												<th style="padding-bottom: 15px">No</th>
+												<th >No</th>
 												<th>Mã khóa học</th>
-												<th style="padding-bottom: 15px">Tên khóa học</th>
+												<th>Tên khóa học</th>
 												<th>Huấn luyện viên chính</th>
 												<th>Thời gian bắt đầu</th>
 												<th>Thời gian kết thúc</th>
 												<th>Số lượng</th>
-												<th style="padding-bottom: 15px">Học phí</th>
+												<th >Học phí</th>
 												<th></th>
 											</tr>
 										</thead>
 
-
+										<%if(message != null && message.equals("filter")){ %>
 										<tbody>
-
+											
+											<% String typeCourse = request.getParameter("typeCourse");
+												List<Course> filter = dao.filterCourse(Integer.parseInt(typeCourse));
+												int index = 0;
+												for (Course course : filter) {
+													index++;
+											%>
+											<tr>
+												<td><%=index%></td>
+												<td><%=course.getCourseCode()%></td>
+												<td><%=course.getCourseName()%></td>
+												<td><%=course.getTrainerName()%></td>
+												<td><%=course.getStartDate()%></td>
+												<td><%=course.getEndDate()%></td>
+												<td><%=course.getQuantity()%></td>
+												<td><%=course.getFee()%></td>
+												<td><a
+													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
+															type="button" class="btn btn-primary">Sửa</button></a>
+													<button onclick="delCourse(<%=course.getCourseID()%>)"
+														type="button" class="btn btn-danger" data-toggle="modal"
+														data-target="#delete">Xóa</button></td>
+											</tr>
+											<%
+												}
+											%>
+										</tbody>
+										<%}else{ %>
+										<tbody>
+											
 											<%
 												List<Course> list = dao.listCourse();
 												int index = 0;
@@ -174,7 +203,7 @@
 												<td><a
 													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
 															type="button" class="btn btn-primary">Sửa</button></a>
-													<button onclick="delUser(<%=course.getCourseID()%>)"
+													<button onclick="delCourse(<%=course.getCourseID()%>)"
 														type="button" class="btn btn-danger" data-toggle="modal"
 														data-target="#delete">Xóa</button></td>
 											</tr>
@@ -182,6 +211,7 @@
 												}
 											%>
 										</tbody>
+										<%} %>
 									</table>
 								</div>
 							</div>
@@ -195,7 +225,7 @@
 
 	<!-- The modal -->
 	<div class="modal fade" id="delete">
-		<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-dialog modal-sm modal-dialog-centered" style="max-width: 350px">
 			<div class="modal-content">
 				<!-- Modal Header -->
 				<div class="modal-header"
@@ -204,7 +234,7 @@
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<h4 style="padding-left: 0px">Xác nhận xóa User ?</h4>
+					<h4 style="padding-left: 0px">Xác nhận xóa khóa học ?</h4>
 				</div>
 				<!-- Modal footer -->
 				<div class="modal-footer" style="justify-content: center">
@@ -216,8 +246,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function delUser(id){
-	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDUser?command=delete&userID="+id);
+	function delCourse(id){
+	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDCourse?command=delete&courseID="+id);
 	}
 </script>
 </body>

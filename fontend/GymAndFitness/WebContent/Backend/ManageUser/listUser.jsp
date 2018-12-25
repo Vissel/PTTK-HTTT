@@ -128,8 +128,10 @@
 										</form>
 									</div>
 									<div class="col-sm-4">
+									<form action="<%=request.getContextPath()%>/AUDUser?command=search">
 										<input type="text" width="250px" height="35px" name="search"> <span><button
-												type="button" class="btn btn-info">Tìm kiếm</button></span>
+												type="submit" class="btn btn-info">Tìm kiếm</button></span>
+									</form>
 									</div>
 								</div>
 								<div class="card-body p-0 pb-3 text-center">

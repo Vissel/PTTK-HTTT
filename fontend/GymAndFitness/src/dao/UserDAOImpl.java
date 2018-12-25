@@ -23,15 +23,19 @@ public class UserDAOImpl implements UserDAO {
 	public static void main(String[] args) {
 		UserDAOImpl test = new UserDAOImpl();
 		/////////test role
-		List<Role> list = test.getRole();
-		for(Role r : list) System.out.println(r.toString());
+//		List<Role> list = test.getRole();
+//		for(Role r : list) System.out.println(r.toString());
 		///////// test get all user
-//		List<Users> list = test.getAllUser();
-//		if (!list.isEmpty())
-//			for (Users u : list)
-//				System.out.println(u.toString());
-//		else
-//			System.out.println("empty");
+		List<Users> list = test.getAllUser();
+		if (!list.isEmpty())
+			for (Users u : list)
+				if(u.getName().contains("thạch")) {
+				System.out.println(u.toString());
+				}else {
+					System.out.println("not found");
+				}
+		else
+			System.out.println("empty");
 		///////// test get one user
 //		Users u = test.getOneUser("1");
 //		System.out.println(u.toString());
@@ -272,6 +276,5 @@ public class UserDAOImpl implements UserDAO {
 		return list;
 	}
 
-	
 
 }

@@ -6,6 +6,7 @@ import model.City;
 import model.CourseType;
 import model.Role;
 import model.Town;
+import model.Users;
 
 public interface ConfigureDAO {
 	List<City> listCity();
@@ -14,4 +15,6 @@ public interface ConfigureDAO {
 	
 	List<Role> getAllRole();
 	List<CourseType> getAllCourseType();
+	
+	List<Users> getAllTrainer();
 }

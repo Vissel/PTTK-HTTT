@@ -11,14 +11,15 @@ import model.City;
 import model.CourseType;
 import model.Role;
 import model.Town;
+import model.Users;
 
 public class ConfigureDAOImpl implements ConfigureDAO{
 	private static Connection connect;
 	public static void main(String[] args) {
 		ConfigureDAOImpl configure = new ConfigureDAOImpl();
 //		System.out.println(configure.getCityTown(1, 1));
-		List<CourseType> list = configure.getAllCourseType();
-		for(CourseType t : list) System.out.println(t.toString());
+		List<Users> list = configure.getAllTrainer();
+		for(Users t : list) System.out.println(t.toString());
 	}
 	@Override
 	public String getCityTown(int cityID, int townID) {
@@ -148,6 +149,34 @@ public class ConfigureDAOImpl implements ConfigureDAO{
 			e.printStackTrace();
 		}
 		return listCourseType;
+	}
+	@Override
+	public List<Users> getAllTrainer() {
+		List<Users> listTrainer = new ArrayList<>();
+		connect = ConnectDB.getConnection();
+		String sql = "SELECT USERS_ID,USERS_CODE,USERS_NAME\r\n" + 
+				"FROM USERS\r\n" + 
+				"WHERE USERS_CODE LIKE 'HL%'";
+		try {
+			PreparedStatement prepared = connect.prepareStatement(sql);
+			ResultSet rs = prepared.executeQuery();
+			Users trainer ;
+			while(rs.next()) {
+				trainer = new Users();
+				trainer.setUserID(rs.getInt(1));
+				trainer.setUserCode(rs.getString(2));
+				trainer.setName(rs.getString(3));
+				listTrainer.add(trainer);
+			}
+			rs.close();
+			prepared.close();
+			connect.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listTrainer;
 	}
 
 	

@@ -58,11 +58,13 @@ public class AUDCourse extends HttpServlet {
 		String trainerCode = request.getParameter("trainerCode");
 		String trainerName = request.getParameter("trainerName");
 		String fee = request.getParameter("fee");
+		String courseID = request.getParameter("courseID");
 		
+		Course course;
 		String url = "";
 		switch (command) {
 		case "add":
-			Course course = new Course();
+			course = new Course();
 			course.setCourseType(Integer.parseInt(typeCourse));
 			course.setCourseCode(codeCourse);
 			course.setCourseName(nameCourse);
@@ -72,15 +74,43 @@ public class AUDCourse extends HttpServlet {
 			course.setQuantity(Long.parseLong(quantity));
 			course.setDescription(description);
 			course.setAddress(room);
-			course.setCity(city);
-			course.setTown(town);
-			course.setTrainerCode(trainerCode);
-			course.setTrainerName(trainerName);
-			course.transCodeToId(trainerCode); // translate code to id
+			course.setCity(Integer.parseInt(city));
+			course.setTown(Integer.parseInt(town));
+			course.setTrainerID(Integer.parseInt(trainerCode)); // id trainer
 			course.setFee(Float.parseFloat(fee));
 			courseDAO.addCourse(course);
 			url = "Backend/ManageCourse/listCourse.jsp?message=add";
 			break;
+		case "update":
+			course = new Course();
+			course.setCourseID(Integer.parseInt(courseID));
+			course.setCourseType(Integer.parseInt(typeCourse));
+			course.setCourseCode(codeCourse);
+			course.setCourseName(nameCourse);
+			course.setStartDate(Date.valueOf(startDate));
+			course.setEndDate(Date.valueOf(endDate));
+			course.setActor(actor);
+			course.setQuantity(Long.parseLong(quantity));
+			course.setDescription(description);
+			course.setAddress(room);
+			course.setCity(Integer.parseInt(city));
+			course.setTown(Integer.parseInt(town));
+			course.setTrainerID(Integer.parseInt(trainerCode)); // id trainer
+			course.setFee(Float.parseFloat(fee));
+			courseDAO.updateCourse(course,Integer.parseInt(courseID));
+			url = "Backend/ManageCourse/listCourse.jsp?message=update";
+			break;
+			
+		case "delete":
+			courseDAO.deleteCourse(Integer.parseInt(courseID));
+			url = "Backend/ManageCourse/listCourse.jsp?message=delete";
+		break;
+		
+		case "filter":
+			courseDAO.filterCourse(Integer.parseInt(typeCourse));
+			url = "Backend/ManageCourse/listCourse.jsp?message=filter&typeCourse="+typeCourse;
+			break;
+		
 		case "cancel":
 			url = "Backend/ManageCourse/listCourse.jsp";
 			break;

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="dao.ConfigureDAOImpl"%>
+<%@page import="model.Users"%>
+<%@page import="model.CourseType"%>
+<%@page import="model.City"%>
+<%@page import="model.Town"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +38,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
+	<%ConfigureDAOImpl configure = new ConfigureDAOImpl(); %>
 	<div class="row">
 		<div class="col-sm-2">
 			<jsp:include page="../menu.jsp"></jsp:include>
@@ -51,10 +58,9 @@
 								<label class="mb-2 mr-sm-2">Loại khóa học: <span
 									id="mandatory">*</span></label> <select class="form-control"
 									style="width: 250px; margin-bottom: 7px" name="typeCourse">
-									<option value="1">GYM</option>
-									<option value="2">YOGA</option>
-									<option value="3">DANCE</option>
-									<option value="4">Huấn luyện cá nhân</option>
+									<%for(CourseType type : configure.getAllCourseType()){ %>
+										<option value="<%=type.getIdType()%>"><%=type.getNameCourse() %></option>
+									<%} %> 
 								</select>
 							</div>
 							<div class="form-group">
@@ -102,41 +108,39 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label class="mb-2 mr-sm-2">Địa chỉ:</label> <input type="text"
-									class="form-control mb-2 mr-sm-2" name="address">
-							</div>
-							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Tỉnh / TP:</label> <select
 									class="form-control" style="width: 250px; margin-bottom: 7px"
 									name="city">
-									<option>TP HCM</option>
-									<option>Hà Nội</option>
-									<option>Cần Thơ</option>
+									<%for(City city : configure.listCity()){ %>
+									<option value="<%=city.getCityID()%>"><%=city.getCityName() %></option>
+									<%} %>
 								</select>
 							</div>
 							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Huyện / Quận :</label> <select
 									class="form-control" style="width: 250px; margin-bottom: 7px"
 									name="town">
-									<option>Quận 1</option>
-									<option>Quận 2</option>
-									<option>Quận 3</option>
-									<option>Quận Thủ đức</option>
-									<option>Quận 9</option>
-									<option>Quận 10</option>
+									<%for(Town town : configure.listTown()){ %>
+									<option value="<%=town.getTownID()%>"><%=town.getTownName() %></option>
+									<%} %>
 								</select>
+							</div>
+							<div class="form-group">
+								<label class="mb-2 mr-sm-2">Địa chỉ:</label> <input type="text"
+									class="form-control mb-2 mr-sm-2" name="address">
 							</div>
 							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Mã Huấn luyện viên:</label> <select
 									class="form-control" style="width: 250px; margin-bottom: 7px"
 									name="trainerCode">
-									<option>HL001</option>
-									<option>HL002</option>
+									<%for(Users u : configure.getAllTrainer()){ %>
+									<option value="<%=u.getUserID() %>"><%=u.getUserCode() %></option>
+									<%} %>
 								</select>
 							</div>
 							<div class="form-group">
 								<label class="mb-2 mr-sm-2">Tên huấn luyện viên:</label> <input
-									type="text" class="form-control mb-2 mr-sm-2"
+									type="text" class="form-control mb-2 mr-sm-2" 
 									name="trainerName">
 							</div>
 							<div class="form-group">

@@ -107,21 +107,7 @@ public class AUDUser extends HttpServlet {
 		case "update":
 			user = new Users();
 			  
-			
-			switch (typeUser) {
-			case "Học viên":
-				user.setRoleID(2);
-				break;
-			case "Huấn luyện viên":
-				user.setRoleID(3);
-				break;
-			case "Nhân viên":
-				user.setRoleID(4);
-				break;
-			default:user.setRoleID(0);
-				break;
-			}
-			
+			user.setRoleID(Integer.parseInt(typeUser));
 			user.setUserCode(codeUser);
 			user.setName(nameUser);
 			user.setDob(Date.valueOf(dob)); // date type
