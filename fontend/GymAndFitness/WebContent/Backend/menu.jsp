@@ -35,8 +35,8 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="<%=request.getContextPath() %>/Backend/index.jsp">
-                  <i class="material-icons">edit</i>
-                  <span>Blog Dashboard</span>
+                  <i class="material-icons">dashboard</i>
+                  <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,21 +53,21 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="form-components.html">
-                  <i class="material-icons">view_module</i>
-                  <span>Forms &amp; Components</span>
+                <a class="nav-link " href="<%=request.getContextPath()%>/Backend/ManageNews/listNews.jsp">
+                  <i class="material-icons">assignment</i>
+                  <span>Quản lý tin tức</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="tables.html">
-                  <i class="material-icons">table_chart</i>
-                  <span>Tables</span>
+                <a class="nav-link " href="<%=request.getContextPath()%>/Backend/ManageSchedule/listSchedule.jsp">
+                  <i class="material-icons">schedule</i>
+                  <span>Quản lý lịch làm việc</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="user-profile-lite.html">
-                  <i class="material-icons">person</i>
-                  <span>User Profile</span>
+                <a class="nav-link " href="<%=request.getContextPath()%>/Backend/ManageProduct/listProduct.jsp">
+                  <i class="material-icons">shop_two</i>
+                  <span>Quản lý sản phẩm</span>
                 </a>
               </li>
               <li class="nav-item">

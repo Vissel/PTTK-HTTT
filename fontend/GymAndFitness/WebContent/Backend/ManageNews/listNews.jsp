@@ -1,10 +1,10 @@
 <%@page import="model.CourseType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="dao.CourseDAOImpl"%>
+<%@page import="dao.NewsDAOImpl"%>
 <%@page import="dao.ConfigureDAOImpl"%>
-<%@page import="model.Course"%>
-<%@page import="model.CourseType"%>
+<%@page import="model.News"%>
+<%@page import="model.NewsType"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/Backend/css/style.css">
-<title>Danh sách Course</title>
+<title>Danh sách bài viết</title>
 
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
 	rel="stylesheet">
@@ -73,7 +73,7 @@
 		}
 	%>
 	<%
-		CourseDAOImpl dao = new CourseDAOImpl();
+		NewsDAOImpl newsDAO = new NewsDAOImpl();
 		ConfigureDAOImpl configure = new ConfigureDAOImpl();
 	%>
 	<div class="container-fluid" style="color: black">
@@ -88,7 +88,7 @@
 				<!-- Page Header -->
 				<div class="page-header row no-gutters py-4">
 					<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-						<h1 class="page-title">Quản lý khóa học</h1>
+						<h1 class="page-title">Quản lý bài viết</h1>
 					</div>
 				</div>
 
@@ -98,10 +98,10 @@
 						<div class="card card-small mb-4">
 							<div class="card-header border-bottom">
 								<a
-									href="<%=request.getContextPath()%>/Backend/ManageCourse/addCourse.jsp"><button
+									href="<%=request.getContextPath()%>/Backend/ManageNews/addNews.jsp"><button
 										type="button" class="btn btn-warning"
-										style="margin-bottom: 5px; font-size: 14px; color: white; border: bold;">Thêm
-										khóa học</button></a>
+										style="margin-bottom: 5px; font-size: 14px; color: white; border: bold;">Thêm tin tức</button>
+								</a>
 								<div class="row">
 									<div class="col-sm-4">
 										<button type="button" class="btn btn-primary">Sao
@@ -118,9 +118,10 @@
 												Lọc theo : <span> <select
 													style="width: 146px; height: 30px" name="typeCourse">
 														<%
-															for (CourseType type : configure.getAllCourseType()) {
+														List<NewsType> listType = configure.listNewsType();
+															for (NewsType type : listType) {
 														%>
-														<option value="<%=type.getIdType()%>"><%=type.getNameCourse()%></option>
+														<option value="<%=type.getIdType()%>"><%=type.getNameNews()%></option>
 														<%
 															}
 														%>
@@ -137,73 +138,49 @@
 								</div>
 
 								<div class="card-body p-0 pb-3 text-center">
-									<table class="table table-bordered table-sm" id="myTable"
+									<table class="table table-bordered table-sm" 
 										style="text-align: center">
 										<thead>
 											<tr>
 												<th >No</th>
-												<th>Mã khóa học</th>
-												<th>Tên khóa học</th>
-												<th>Huấn luyện viên chính</th>
-												<th>Thời gian bắt đầu</th>
-												<th>Thời gian kết thúc</th>
-												<th>Số lượng</th>
-												<th >Học phí</th>
+												<th>Mã bài viết</th>
+												<th>Loại bài viết</th>
+												<th>Tên bài viết</th>
+												<th>Người tạo</th>
+												<th>Ngày tạo</th>
+												<th>Ngày đăng</th>
+												<th>Tình trạng</th>
 												<th id="lineEnd"></th>
 											</tr>
 										</thead>
 
-										<%if(message != null && message.equals("filter")){ %>
+										
 										<tbody id="myTable">
 											
-											<% String typeCourse = request.getParameter("typeCourse");
-												List<Course> filter = dao.filterCourse(Integer.parseInt(typeCourse));
+											<%
+												List<News> listNews = newsDAO.listAllNews();
 												int index = 0;
-												for (Course course : filter) {
+												for (News news : listNews) {
 													index++;
 											%>
 											<tr>
 												<td><%=index%></td>
-												<td><%=course.getCourseCode()%></td>
-												<td><%=course.getCourseName()%></td>
-												<td><%=course.getTrainerName()%></td>
-												<td><%=course.getStartDate()%></td>
-												<td><%=course.getEndDate()%></td>
-												<td><%=course.getQuantity()%></td>
-												<td><%=course.getFee()%></td>
-												<td id="button"><a
-													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
+												<td><%=news.getNewsCode()%></td>
+												<%for(NewsType type1 : listType){ 
+													if(type1.getIdType() == news.getNewsType()){%>
+												<td><%=type1.getNameNews()%></td>
+												<%} }%>
+												<td><%=news.getNewsName() %></td>
+												<td><%=news.getCreaterName(news.getCreaterID())%></td>
+												<td><%=news.getDateCreate()%></td>
+												<td><%=news.getDatePublish()%></td>
+												<%int state = news.getState();%>
+												<%if (state == 1) %><td>Đang hiển thị</td><%if (state == 0) %><td>Bị ẩn</td>
+												<td >
+												 <i class="fas fa-arrow-alt-circle-up" style="font-size: 25px;color:green"></i>
+													<a href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=news.getNewsID()%>"><button
 															type="button" class="btn btn-primary">Sửa</button></a>
-													<button onclick="delCourse(<%=course.getCourseID()%>)"
-														type="button" class="btn btn-danger" data-toggle="modal"
-														data-target="#delete">Xóa</button></td>
-											</tr>
-											<%
-												}
-											%>
-										</tbody >
-										<%}else{ %>
-										<tbody id="myTable">
-											
-											<%
-												List<Course> list = dao.listCourse();
-												int index = 0;
-												for (Course course : list) {
-													index++;
-											%>
-											<tr>
-												<td><%=index%></td>
-												<td><%=course.getCourseCode()%></td>
-												<td><%=course.getCourseName()%></td>
-												<td><%=course.getTrainerName()%></td>
-												<td><%=course.getStartDate()%></td>
-												<td><%=course.getEndDate()%></td>
-												<td><%=course.getQuantity()%></td>
-												<td><%=course.getFee()%></td>
-												<td ><a
-													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
-															type="button" class="btn btn-primary">Sửa</button></a>
-													<button onclick="delCourse(<%=course.getCourseID()%>)"
+													<button onclick="delCourse(<%=news.getNewsID()%>)"
 														type="button" class="btn btn-danger" data-toggle="modal"
 														data-target="#delete">Xóa</button></td>
 											</tr>
@@ -211,7 +188,6 @@
 												}
 											%>
 										</tbody>
-										<%} %>
 									</table>
 								</div>
 							</div>
@@ -249,9 +225,9 @@
 	function delCourse(id){
 	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDCourse?command=delete&courseID="+id);
 	}
-	function myFuction(){
-	$(document).ready(function(){
-		  $("#myInput").on("keyup", function() {
+	function myFunction() {
+		$(document).ready(function(){
+			  $("#myInput").on("keyup", function() {
 			    var value = $(this).val().toLowerCase();
 			    $("#myTable tr").filter(function() {
 			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)

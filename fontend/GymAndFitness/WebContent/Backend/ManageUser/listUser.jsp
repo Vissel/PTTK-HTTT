@@ -128,15 +128,14 @@
 										</form>
 									</div>
 									<div class="col-sm-4">
-									<form action="<%=request.getContextPath()%>/AUDUser?command=search">
-										<input type="text" width="250px" height="35px" name="search"> <span><button
-												type="submit" class="btn btn-info">Tìm kiếm</button></span>
-									</form>
+									<input type="text" width="100%" height="35px" name="search" id="myInput" onkeyup="myFunction()">
+										 <span><button type="button" class="btn btn-info" disabled="disabled">Tìm
+												kiếm</button></span> 
 									</div>
 								</div>
 								<div class="card-body p-0 pb-3 text-center">
 									
-									<table class="table table-bordered table-sm">
+									<table class="table table-bordered table-sm" >
 										<thead class="bg-light" style="">
 											<tr>
 												<th>No</th>
@@ -151,7 +150,7 @@
 										</thead>
 
 
-										<tbody>
+										<tbody id="myTable">
 											<%
 												if (message != null && message.equals("filter")) {
 													String type = (String) request.getParameter("type");
@@ -250,6 +249,16 @@
 	function delUser(id){
 	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDUser?command=delete&userID="+id);
 	}
+	function myFunction() {
+		$(document).ready(function(){
+			  $("#myInput").on("keyup", function() {
+			    var value = $(this).val().toLowerCase();
+			    $("#myTable tr").filter(function() {
+			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			    });
+			  });
+			});
+		}
 </script>
 </body>
 <style type="text/css">
@@ -261,10 +270,13 @@ body{
 tbody tr td {
 	color: black;
 }
-
+table thead{
+height: 30px
+}
 thead tr th {
 	background-color: #339999;
 	color: #FFFF00;
+		height: 30px
 }
 </style>
 

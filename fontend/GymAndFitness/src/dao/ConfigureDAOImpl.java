@@ -9,9 +9,12 @@ import java.util.List;
 
 import model.City;
 import model.CourseType;
+import model.Month;
+import model.NewsType;
 import model.Role;
 import model.Town;
 import model.Users;
+import model.Year;
 
 public class ConfigureDAOImpl implements ConfigureDAO{
 	private static Connection connect;
@@ -177,6 +180,74 @@ public class ConfigureDAOImpl implements ConfigureDAO{
 		}
 		
 		return listTrainer;
+	}
+	@Override
+	public List<NewsType> listNewsType() {
+		List<NewsType> listType = new ArrayList<>();
+		connect = ConnectDB.getConnection();
+		String sql = "SELECT * FROM CONFIG_NEWS";
+		try {
+			PreparedStatement prepared = connect.prepareStatement(sql);
+			ResultSet rs = prepared.executeQuery();
+			NewsType type;
+			while(rs.next()) {
+				type = new NewsType();
+				type.setIdType(rs.getInt(1));
+				type.setNameNews(rs.getString(2));
+				listType.add(type);
+			}
+			rs.close();
+			prepared.close();
+			connect.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listType;
+	}
+	@Override
+	public List<Year> listYear() {
+		List<Year> listYear = new ArrayList<>();
+		connect = ConnectDB.getConnection();
+		try {
+			PreparedStatement prepared = connect.prepareStatement("SELECT * FROM CONFIG_YEAR");
+			Year year ;
+			ResultSet rs = prepared.executeQuery();
+			while(rs.next()) {
+				year = new Year(rs.getInt(1), rs.getInt(2));
+				listYear.add(year);
+			}
+			rs.close();
+			prepared.close();
+			connect.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listYear;
+	}
+	@Override
+	public List<Month> listMonth() {
+		List<Month> listMonth = new ArrayList<>();
+		connect = ConnectDB.getConnection();
+		try {
+			PreparedStatement prepared = connect.prepareStatement("SELECT * FROM CONFIG_MONTH");
+			Month month ;
+			ResultSet rs = prepared.executeQuery();
+			while(rs.next()) {
+				month = new Month(rs.getInt(1), rs.getInt(2));
+				listMonth.add(month);
+			}
+			rs.close();
+			prepared.close();
+			connect.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listMonth;
 	}
 
 	

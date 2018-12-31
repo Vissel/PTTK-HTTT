@@ -1,10 +1,7 @@
-<%@page import="model.CourseType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="dao.CourseDAOImpl"%>
-<%@page import="dao.ConfigureDAOImpl"%>
-<%@page import="model.Course"%>
-<%@page import="model.CourseType"%>
+<%@page import="dao.ProductThachDAOImpl"%>
+<%@page import="model.ProductThach"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/Backend/css/style.css">
-<title>Danh sách Course</title>
+<title>Danh sách sản phẩm</title>
 
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
 	rel="stylesheet">
@@ -73,8 +70,7 @@
 		}
 	%>
 	<%
-		CourseDAOImpl dao = new CourseDAOImpl();
-		ConfigureDAOImpl configure = new ConfigureDAOImpl();
+		ProductThachDAOImpl productDAO = new ProductThachDAOImpl();
 	%>
 	<div class="container-fluid" style="color: black">
 		<div class="row">
@@ -88,7 +84,7 @@
 				<!-- Page Header -->
 				<div class="page-header row no-gutters py-4">
 					<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-						<h1 class="page-title">Quản lý khóa học</h1>
+						<h1 class="page-title">Quản lý sản phẩm</h1>
 					</div>
 				</div>
 
@@ -98,10 +94,10 @@
 						<div class="card card-small mb-4">
 							<div class="card-header border-bottom">
 								<a
-									href="<%=request.getContextPath()%>/Backend/ManageCourse/addCourse.jsp"><button
+									href="<%=request.getContextPath()%>/Backend/ManageProduct/addProduct.jsp"><button
 										type="button" class="btn btn-warning"
 										style="margin-bottom: 5px; font-size: 14px; color: white; border: bold;">Thêm
-										khóa học</button></a>
+										sản phẩm</button></a>
 								<div class="row">
 									<div class="col-sm-4">
 										<button type="button" class="btn btn-primary">Sao
@@ -117,13 +113,7 @@
 											<p>
 												Lọc theo : <span> <select
 													style="width: 146px; height: 30px" name="typeCourse">
-														<%
-															for (CourseType type : configure.getAllCourseType()) {
-														%>
-														<option value="<%=type.getIdType()%>"><%=type.getNameCourse()%></option>
-														<%
-															}
-														%>
+														<option value=""></option>
 												</select>
 												</span> <span><button type="submit" class="btn btn-info">Lọc</button></span>
 											</p>
@@ -142,68 +132,34 @@
 										<thead>
 											<tr>
 												<th >No</th>
-												<th>Mã khóa học</th>
-												<th>Tên khóa học</th>
-												<th>Huấn luyện viên chính</th>
-												<th>Thời gian bắt đầu</th>
-												<th>Thời gian kết thúc</th>
+												<th>Mã sản phẩm</th>
+												<th>Tên sản phẩm</th>
+												<th>Hình ảnh</th>
+												<th>Nhà sản xuất</th>
 												<th>Số lượng</th>
-												<th >Học phí</th>
+												<th style="width: 100px">Giá</th>
 												<th id="lineEnd"></th>
 											</tr>
 										</thead>
-
-										<%if(message != null && message.equals("filter")){ %>
-										<tbody id="myTable">
-											
-											<% String typeCourse = request.getParameter("typeCourse");
-												List<Course> filter = dao.filterCourse(Integer.parseInt(typeCourse));
+										<tbody>
+											<%
+												List<ProductThach> listProduct = productDAO.listProduct();
 												int index = 0;
-												for (Course course : filter) {
+												for (ProductThach product : listProduct) {
 													index++;
 											%>
 											<tr>
 												<td><%=index%></td>
-												<td><%=course.getCourseCode()%></td>
-												<td><%=course.getCourseName()%></td>
-												<td><%=course.getTrainerName()%></td>
-												<td><%=course.getStartDate()%></td>
-												<td><%=course.getEndDate()%></td>
-												<td><%=course.getQuantity()%></td>
-												<td><%=course.getFee()%></td>
-												<td id="button"><a
-													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
-															type="button" class="btn btn-primary">Sửa</button></a>
-													<button onclick="delCourse(<%=course.getCourseID()%>)"
-														type="button" class="btn btn-danger" data-toggle="modal"
-														data-target="#delete">Xóa</button></td>
-											</tr>
-											<%
-												}
-											%>
-										</tbody >
-										<%}else{ %>
-										<tbody id="myTable">
-											
-											<%
-												List<Course> list = dao.listCourse();
-												int index = 0;
-												for (Course course : list) {
-													index++;
-											%>
-											<tr>
-												<td><%=index%></td>
-												<td><%=course.getCourseCode()%></td>
-												<td><%=course.getCourseName()%></td>
-												<td><%=course.getTrainerName()%></td>
-												<td><%=course.getStartDate()%></td>
-												<td><%=course.getEndDate()%></td>
-												<td><%=course.getQuantity()%></td>
-												<td><%=course.getFee()%></td>
+												<td><%=product.getProductCode()%></td>
+												<td><%=product.getProductName()%></td>
+												<td><img alt="hình ảnh" src="<%=product.getUrl()%>" width="50px" height="50px"></td>
+												<td><%=product.getProducer()%></td>
+												<td><%=product.getQuantity()%></td>
+												<td><%=product.getPrice()%></td>
 												<td ><a
-													href="<%=request.getContextPath()%>/Backend/ManageCourse/editCourse.jsp?courseID=<%=course.getCourseID()%>"><button
+													href="<%=request.getContextPath()%>/Backend/ManageProduct/editProduct.jsp?productID=<%=product.getProductID()%>"><button
 															type="button" class="btn btn-primary">Sửa</button></a>
-													<button onclick="delCourse(<%=course.getCourseID()%>)"
+													<button onclick="delProduct(<%=product.getProductID()%>)"
 														type="button" class="btn btn-danger" data-toggle="modal"
 														data-target="#delete">Xóa</button></td>
 											</tr>
@@ -211,7 +167,6 @@
 												}
 											%>
 										</tbody>
-										<%} %>
 									</table>
 								</div>
 							</div>
@@ -246,8 +201,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	function delCourse(id){
-	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDCourse?command=delete&courseID="+id);
+	function delProduct(id){
+	   $("#btn-del").attr("href","<%=request.getContextPath()%>/AUDProduct?command=delete&productID="+id);
 	}
 	function myFuction(){
 	$(document).ready(function(){

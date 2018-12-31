@@ -19,7 +19,7 @@ public class Users {
 	private String bankAccount;
 	private String bankName;
 	private String description;
-	private int scheduleID;
+	private Schedule schedule = new Schedule();
 	private int status;
 	
 	
@@ -50,10 +50,17 @@ public class Users {
 //		ConfigureDAOImpl config = new ConfigureDAOImpl();
 //		return config.nameRole(rID);
 //	}
+	
 	public int getUserID() {
 		return userID;
 	}
 
+	public Schedule getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
 	public int getCity() {
 		return city;
 	}
@@ -149,14 +156,6 @@ public class Users {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getScheduleID() {
-		return scheduleID;
-	}
-
-	public void setScheduleID(int scheduleID) {
-		this.scheduleID = scheduleID;
-	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -177,8 +176,8 @@ public class Users {
 	public String toString() {
 		return "Users [userCode=" + userCode + ", name=" + name + ", roleID=" + roleID + ", sex=" + sex + ", bob=" + dob
 				+ ", phone=" + phone + ", address=" + address + ", bankAccount=" + bankAccount + ", bankName="
-				+ bankName + ", description=" + description + ", scheduleID=" + scheduleID
-				+ ", status=" + status + "]";
+				+ bankName + ", description=" + description 
+				+ ", status=" + status + "\t]"+schedule;
 	}
 	
 	

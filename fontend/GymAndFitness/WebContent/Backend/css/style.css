@@ -3,14 +3,7 @@ body{
 	color: black;
 	font-size: 14px
 }
-tbody tr td {
-	color: black;
-}
 
-thead tr th {
-	background-color: #339999;
-	color: #FFFF00;
-}
 h1 {
 	text-align: center;
 }
