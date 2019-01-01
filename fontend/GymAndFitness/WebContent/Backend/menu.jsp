@@ -34,7 +34,7 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="<%=request.getContextPath() %>/Backend/index.jsp">
+                <a class="nav-link active" href="<%=request.getContextPath() %>/Backend/backend.jsp">
                   <i class="material-icons">dashboard</i>
                   <span>Dashboard</span>
                 </a>
