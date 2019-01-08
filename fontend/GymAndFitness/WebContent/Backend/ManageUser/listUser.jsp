@@ -128,9 +128,8 @@
 										</form>
 									</div>
 									<div class="col-sm-4">
-									<input type="text" width="100%" height="35px" name="search" id="myInput" onkeyup="myFunction()">
-										 <span><button type="button" class="btn btn-info" disabled="disabled">Tìm
-												kiếm</button></span> 
+									<input type="text" style="width:80%; height: 30px"  name="search" id="myInput" onkeyup="myFunction()">
+									<button type="reset" class="btn btn-success"><i class="fa fa-search"></i></button>
 									</div>
 								</div>
 								<div class="card-body p-0 pb-3 text-center">

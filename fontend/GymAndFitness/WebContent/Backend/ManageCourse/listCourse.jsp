@@ -131,8 +131,7 @@
 									</div>
 									<div class="col-sm-4">
 										<input type="text" width="100%" height="35px" name="search" id="myInput" onkeyup="myFunction()">
-										 <span><button type="button" class="btn btn-info" disabled="disabled">Tìm
-												kiếm</button></span> 
+										<button type="reset" class="btn btn-success"><i class="fa fa-search"></i></button>
 									</div>
 								</div>
 
